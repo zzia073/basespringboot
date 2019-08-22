@@ -13,7 +13,7 @@ pipeline {
     stage('deploy'){
         steps {
             unstash 'source'
-            sh 'java -jar springboot01/target/springboot01-1.0-SNAPSHOT.jar'
+            sh 'java -jar springboot01/target/springboot01-1.0-SNAPSHOT.jar &'
         }
     }
   }
