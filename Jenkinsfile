@@ -2,7 +2,7 @@ pipeline {
   agent none
   stages {
     stage('build'){
-        node {
+        steps {
             git 'https://github.com/zzia073/basespringboot.git'
             withEnv(["PATH+MAVEN=${tool 'm3'}/bin"]) {
                sh 'mvn -B -Dmaven.test.failure.ignore=true clean package'
@@ -11,7 +11,7 @@ pipeline {
         }
     }
     stage('deploy'){
-        node{
+        steps {
             unstash 'source'
             withEnv(["PATH+MAVEN=${tool 'm3'}/bin"]) {
                 sh 'mvn cargo:deploy'
