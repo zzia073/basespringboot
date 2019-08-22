@@ -13,9 +13,7 @@ pipeline {
     stage('deploy'){
         steps {
             unstash 'source'
-            withEnv(["PATH+MAVEN=${tool 'm3'}/bin"]) {
-                sh 'mvn cargo:deploy'
-            }
+            sh 'java -jar springboot01/target/springboot01-1.0-SNAPSHOT.jar'
         }
     }
   }
